@@ -231,6 +231,4 @@ class Utilisateurs
         $this->campus = $campus;
     }
 
-
-
 }
