@@ -19,6 +19,18 @@ class SortiesRepository extends ServiceEntityRepository
         parent::__construct($registry, Sorties::class);
     }
 
+    public function findSorties()
+    {
+        $em = $this->getEntityManager();
+        $dql = "SELECT s 
+                FROM App\Entity\Sorties s 
+                ORDER BY s.datecloture ASC";
+
+        $query = $em ->createQuery($dql);
+        $query->setMaxResults(20);
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Sorties[] Returns an array of Sorties objects
     //  */

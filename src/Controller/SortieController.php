@@ -17,7 +17,7 @@ class SortieController extends AbstractController
     public function list()
     {
         $sortieRepo = $this->getDoctrine()->getRepository(Sorties::class);
-        $sorties = $sortieRepo->findBy([],["datedebut" => "DESC"],20);
+        $sorties = $sortieRepo->findSorties();
 
         return $this->render('sortie/list.html.twig', [
             "sorties" => $sorties
@@ -44,15 +44,16 @@ class SortieController extends AbstractController
      */
     public function add(EntityManagerInterface $em)
     {
+
         //@todo: traiter le formulaire
 
         $sortie = new Sorties();
-        $sortie->setNom("sortie2");
-        $sortie->setDatedebut(new \DateTime());
-        $sortie->setDatecloture(new \DateTime());
+        $sortie->setNom("sortie3");
+        $sortie->setDatedebut(new \DateTime("2020-07-07 12:00:00"));
+        $sortie->setDatecloture(new \DateTime("2020-08-08 12:00:00"));
         $sortie->setDuree(new \DateTime());
         $sortie->setNbinscriptionsmax(20);
-        $sortie->setDescriptioninfos("sortie2");
+        $sortie->setDescriptioninfos("sortie3");
         $sortie->setOrganisateur(1);
 
         $em->persist($sortie);
