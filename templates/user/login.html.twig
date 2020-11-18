@@ -1,17 +1,20 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sortir.com | Login</title>
+</head>
+<body>
+    <div class="container">
+        <form method="post">
+            <label for="username">Username:</label>
+            <input type="text" name="_username" id="username">
 
-{% block main %}
-    <form method="post">
-        <label for="username">Username:</label>
-        <input type="text" name="_username" id="username">
+            <label for="password">Password:</label>
+            <input type="password" name="_password" id="password">
 
-        <label for="password">Password:</label>
-        <input type="password" name="_password" id="password">
-
-        <button type="submit">Login!</button>
-
-    </form>
-
-{% endblock %}
-
-{% block title %} Login {% endblock %}
+            <button type="submit">Login!</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,11 +1,11 @@
 <nav>
     <ul>
-        <li><a href="">Home</a></li>
+        <li><a href="{{ path('home') }}">Home</a></li>
         {% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
             <li><a href="">Profil</a></li>
             <li><a href="">Logout</a></li>
         {% else %}
-            <li><a href="">Login</a></li>
+            <li><button onclick="window.open('{{ path('login') }}','login','height=200, width=200')">Login</button></li>
         {% endif %}
     </ul>
 </nav>

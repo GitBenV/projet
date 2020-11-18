@@ -9,7 +9,7 @@ class UserController extends AbstractController
 {
 
     /**
-     * @Route("/", name="login")
+     * @Route("/login", name="login")
      */
     public function login()
     {
