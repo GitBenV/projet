@@ -19,9 +19,9 @@ default/home.html.twig
 
 Page Accueil (connecté) : url = http://localhost/projet/public/index
 
-Usercontroller
-@Route "/index"
-user/index.html.twig
+Sortiecontroller
+@Route "/sortie"
+sortie/list.html.twig
 
 Page mon profil (modifier mon profil) : url = http://localhost/projet/public/profil
 
@@ -41,11 +41,11 @@ Sortiecontroller
 @Route "/sortie/add"
 sortie/add.html.twig
 
-Page afficher une sortie : url = http://localhost/projet/public/sortie
+Page afficher une sortie : url = http://localhost/projet/public/sortie/id
 
 Sortiecontroller
-@Route "/sortie"
-sortie/list.html.twig
+@Route "/sortie/{id}"
+sortie/detail.html.twig
 
 Page afficher une sortie : url = http://localhost/projet/public/sortie/edit
 
