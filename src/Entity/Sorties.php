@@ -62,6 +62,16 @@ class Sorties
      */
     private $organisateur;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Etats")
+     */
+    private $etat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Villes", inversedBy="sorties")
+     */
+    private $ville;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -174,4 +184,38 @@ class Sorties
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * @param mixed $etat
+     */
+    public function setEtat($etat): void
+    {
+        $this->etat = $etat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param mixed $ville
+     */
+    public function setVille($ville): void
+    {
+        $this->ville = $ville;
+    }
+
+
 }
