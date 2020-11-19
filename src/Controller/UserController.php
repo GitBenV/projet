@@ -2,22 +2,25 @@
 
 namespace App\Controller;
 
+use App\Entity\Utilisateurs;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
+    /*
+     /**
+     * @Route("/user/login", name="app_login")
 
-    /**
-     * @Route("/login", name="login")
-     */
     public function login()
     {
         return $this->render("user/login.html.twig", []);
     }
-    /*          Permet dafficher le utillisateur
+    */
+            // Permet dafficher le utillisateur
     /**
-     * @Route("/login", name="login")
+     * @Route("/user/login", name="app_login")
+    */
 
     public function list()
     {
@@ -27,22 +30,21 @@ class UserController extends AbstractController
 
         return $this->render("user/login.html.twig");
     }
-    */
 
     /**
-     * @Route("/", name="profil")
+     * @Route("/user/profil", name="app_profil")
      */
     public function profil()
     {
         return $this->render('user/profil.html.twig', []);
     }
 
-    /**
+   /* /**
      * Symfony gère entièrement cette route
-     * @Route ("/logout", name="logout")
-     */
-    public function logout() {}
+     * @Route ("/logout", name="app_logout")
 
+    public function logout() {}
+    */
     /*/**
      * @Route("/login", name="login")
 
@@ -69,8 +71,5 @@ class UserController extends AbstractController
         return $this->render('user/login.html.twig');
 
     }*/
-
-
-
 
 }
