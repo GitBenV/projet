@@ -66,9 +66,8 @@ class Utilisateurs
     private $actif;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus")
      */
-
     private $campus;
 
     /**
@@ -230,7 +229,6 @@ class Utilisateurs
     {
         $this->campus = $campus;
     }
-
 
 
 }

@@ -22,6 +22,16 @@ class Inscriptions
      */
     private $dateinscription;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sorties")
+     */
+    private $sortie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateurs")
+     */
+    private $utilisateur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -38,4 +48,38 @@ class Inscriptions
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSortie()
+    {
+        return $this->sortie;
+    }
+
+    /**
+     * @param mixed $sortie
+     */
+    public function setSortie($sortie): void
+    {
+        $this->sortie = $sortie;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+
+    /**
+     * @param mixed $utilisateur
+     */
+    public function setUtilisateur($utilisateur): void
+    {
+        $this->utilisateur = $utilisateur;
+    }
+
+
 }
