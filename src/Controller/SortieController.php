@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SortieController extends AbstractController
 {
     /**
-     * @Route("/sortie", name="sortie_list")
+     * @Route("/sortie/list", name="sortie_list")
      */
     public function list()
     {
@@ -38,14 +38,14 @@ class SortieController extends AbstractController
             "sortie" => $sortie
         ]);
     }
-
+    /*
     /**
-     * @Route ("/sortie/add", name="serie_add")
-     */
+     * @Route ("/sortie/add", name="sortie_add")
+
     public function add(EntityManagerInterface $em)
     {
 
-        //@todo: traiter le formulaire
+
 
         $sortie = new Sorties();
         $sortie->setNom("sortie3");
@@ -64,5 +64,5 @@ class SortieController extends AbstractController
 
         return $this->render('sortie/add.html.twig');
     }
-
+    */
 }
