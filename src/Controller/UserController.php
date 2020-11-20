@@ -41,15 +41,14 @@ class UserController extends AbstractController
             "registerForm"=> $registerForm->createView()
         ]);
     }
-    /*
-     /**
+    /**
      * @Route("/user/login", name="app_login")
-
+    */
     public function login()
     {
-        return $this->render("user/login.html.twig", []);
+        return $this->render("user/index.html.twig", []);
     }
-    */
+
             // Permet dafficher le utillisateur
     /**
      * @Route("/user/login", name="app_login")
@@ -71,13 +70,12 @@ class UserController extends AbstractController
     {
         return $this->render('user/profil.html.twig', []);
     }
-
-   /* /**
+    /**
      * Symfony gère entièrement cette route
      * @Route ("/logout", name="app_logout")
-
-    public function logout() {}
     */
+    public function logout() {}
+
     /*/**
      * @Route("/login", name="login")
 

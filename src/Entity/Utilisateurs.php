@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\UtilisateursRepository;
 use Doctrine\ORM\Mapping as ORM;
-use http\Client\Curl\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -194,7 +193,7 @@ class Utilisateurs implements UserInterface
 
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return ["ROLE_USER"];
     }
 
     /**
