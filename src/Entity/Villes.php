@@ -11,10 +11,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Villes
 {
+    public function __toString()
+    {
+        return $this->nomville;
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $id;
 

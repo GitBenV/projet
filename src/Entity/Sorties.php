@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SortiesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SortiesRepository::class)
@@ -18,11 +19,14 @@ class Sorties
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Renseignez un nom pour la sortie")
+     * @Assert\Length(max=255, maxMessage="Maximum 255 caractères")
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
 
     /**
+     * @Assert\NotBlank(message="Renseignez la date de la sortie")
      * @ORM\Column(type="date")
      */
     private $datedebut;
@@ -33,11 +37,13 @@ class Sorties
     private $duree;
 
     /**
+     * @Assert\NotBlank(message="Renseignez la cloture pour les inscriptions")
      * @ORM\Column(type="date")
      */
     private $datecloture;
 
     /**
+     * @Assert\NotBlank(message="Renseignez le nombre d'inscriptions maximum")
      * @ORM\Column(type="integer")
      */
     private $nbinscriptionsmax;
@@ -58,13 +64,14 @@ class Sorties
     private $urlPhoto;
 
     /**
+     * @Assert\NotBlank(message="Renseignez le nombre d'organisateur pour la sortie")
      * @ORM\Column(type="integer")
      */
     private $organisateur;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Etats")
-     */
+    * @ORM\ManyToOne(targetEntity="App\Entity\Etats")
+    */
     private $etat;
 
     /**

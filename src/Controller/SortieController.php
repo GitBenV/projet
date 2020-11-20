@@ -51,7 +51,7 @@ class SortieController extends AbstractController
         $sortieForm= $this->CreateForm(SortieType::class, $sortie);
 
         $sortieForm->handleRequest($request);
-        if ($sortieForm->isSubmitted()){
+        if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
             $em->persist($sortie);
             $em->flush();
 
@@ -60,21 +60,6 @@ class SortieController extends AbstractController
                 'id' => $sortie->getId()
             ]);
         }
-
-        /*$sortie = new Sorties();
-        $sortie->setNom("sortie3");
-        $sortie->setDatedebut(new \DateTime("2020-07-07 12:00:00"));
-        $sortie->setDatecloture(new \DateTime("2020-08-08 12:00:00"));
-        $sortie->setDuree(new \DateTime());
-        $sortie->setNbinscriptionsmax(20);
-        $sortie->setDescriptioninfos("sortie3");
-        $sortie->setOrganisateur(1);
-
-        $em->persist($sortie);
-        $em->flush();
-
-        //$em->remove($sortie);
-        //$em->flush();*/
 
         return $this->render('sortie/add.html.twig', [
             "sortieForm" => $sortieForm->createView()
