@@ -10,7 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Etats
 {
-    /**
+    public function __toString()
+    {
+        return $this->libelle;
+    }
+
+     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
