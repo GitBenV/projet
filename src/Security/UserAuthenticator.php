@@ -37,7 +37,7 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator
 
     public function supports(Request $request)
     {
-        return self::LOGIN_ROUTE === $request->attributes->get('_route')
+        return self::LOGIN_ROUTE === $request->attributes->get('user/index.html.twig')
             && $request->isMethod('POST');
     }
 
@@ -86,8 +86,8 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('home.html.twig'.__FILE__);
+        //return new RedirectResponse($this->urlGenerator->generate('some_route'));
+     //   throw new \Exception('home.html.twig'.__FILE__);
     }
 
     protected function getLoginUrl()

@@ -4,11 +4,13 @@ namespace App\Entity;
 
 use App\Repository\UtilisateursRepository;
 use Doctrine\ORM\Mapping as ORM;
+use http\Client\Curl\User;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateursRepository::class)
  */
-class Utilisateurs
+class Utilisateurs implements UserInterface
 {
     /**
      * @ORM\Id
@@ -21,7 +23,7 @@ class Utilisateurs
      * @ORM\Column(type="string", length=255, unique=true)
      */
 
-    private $pseudo;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -45,7 +47,7 @@ class Utilisateurs
      * @ORM\Column(type="string", length=255)
      */
 
-    private $mail;
+    private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -56,6 +58,10 @@ class Utilisateurs
     /**
      * @ORM\Column(type="boolean")
      */
+
+    //pas sauvegardé en base
+    private $roles;
+
 
     private $admin;
 
@@ -89,17 +95,17 @@ class Utilisateurs
     /**
      * @return mixed
      */
-    public function getPseudo()
+    public function getusername()
     {
-        return $this->pseudo;
+        return $this->username;
     }
 
     /**
-     * @param mixed $pseudo
+     * @param mixed $username
      */
-    public function setPseudo($pseudo): void
+    public function setusername($username): void
     {
-        $this->pseudo = $pseudo;
+        $this->username = $username;
     }
 
     /**
@@ -153,17 +159,17 @@ class Utilisateurs
     /**
      * @return mixed
      */
-    public function getMail()
+    public function getemail()
     {
-        return $this->mail;
+        return $this->email;
     }
 
     /**
-     * @param mixed $mail
+     * @param mixed $email
      */
-    public function setMail($mail): void
+    public function setemail($email): void
     {
-        $this->mail = $mail;
+        $this->email = $email;
     }
 
     /**
@@ -180,6 +186,15 @@ class Utilisateurs
     public function setPassword($password): void
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
     }
 
     /**
@@ -230,5 +245,8 @@ class Utilisateurs
         $this->campus = $campus;
     }
 
+    //inutile pour nous....
+    public function getSalt(){return null;}
+    public function eraseCredentials(){}
 
 }
