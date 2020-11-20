@@ -5,7 +5,30 @@
 
     {% for sortie in sorties %}
         <div class="sortie">
-            <a href="{{ path('sortie_detail', {'id':sortie.id}) }}">{{ sortie.nom }}</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Nom de la sortie</th>
+                    <th scope="col">date début</th>
+                    <th scope="col">date cloture</th>
+                    <th scope="col">Agir</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">{{ sortie.nom }}</th>
+                    <td>test</td>
+                    <td>test</td>
+                    <td><a href="{{ path('sortie_detail', {'id':sortie.id}) }}">Afficher</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     {% endfor %}
 

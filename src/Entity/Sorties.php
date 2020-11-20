@@ -54,11 +54,6 @@ class Sorties
     private $descriptioninfos;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $etatsortie;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $urlPhoto;
@@ -152,18 +147,6 @@ class Sorties
     public function setDescriptioninfos(?string $descriptioninfos): self
     {
         $this->descriptioninfos = $descriptioninfos;
-
-        return $this;
-    }
-
-    public function getEtatsortie(): ?int
-    {
-        return $this->etatsortie;
-    }
-
-    public function setEtatsortie(?int $etatsortie): self
-    {
-        $this->etatsortie = $etatsortie;
 
         return $this;
     }

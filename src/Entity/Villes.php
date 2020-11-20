@@ -19,7 +19,7 @@ class Villes
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     private $id;
 
