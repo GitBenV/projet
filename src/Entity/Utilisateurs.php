@@ -55,13 +55,13 @@ class Utilisateurs implements UserInterface
 
     private $password;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
 
     //pas sauvegardé en base
     private $roles;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
 
     private $admin;
 
