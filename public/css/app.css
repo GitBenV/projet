@@ -43,16 +43,9 @@ h1{
 #blaze{
     color: darkgoldenrod;
     font-family: "Bradley Hand ITC";
-    font-size: 2rem;
+    font-size: 30px;
 }
 
-#nav_link{
+#nav_link {
     color: silver;
-}
-
-#porte{
-    color: aquamarine;
-    font-size: 50px;
-    font-family: Broadway;
-    position: relative;
 }
