@@ -69,5 +69,14 @@ class SortieController extends AbstractController
             "sortieForm" => $sortieForm->createView()
         ]);
     }
+    /**
+     * @Route("/sortie/index", name="sortie_index")
+     */
+    public function affiche()
+    {
+        $this->addFlash('success', 'Vous êtes bien inscrit à la sortie.');
+
+        return $this->render("sortie/index.html.twig", []);
+    }
 
 }
