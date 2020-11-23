@@ -52,6 +52,30 @@ class UserController extends AbstractController
         return $this->render("user/login.html.twig", []);
     }
 
+    /*
+     * @Route ("/user/login", name="login")
+
+
+public function add(EntityManagerInterface $em)
+    {
+
+        $utilisateur = new Utilisateurs();
+        $utilisateur->setusername("titi");
+        $utilisateur->setNom("tutu");
+        $utilisateur->setPrenom("toto");
+        $utilisateur->setTelephone(145257896);
+        $utilisateur->setEmail("titi@sortie.fr");
+        $utilisateur->setPassword("titi1");
+        $utilisateur->setAdmin(true);
+        $utilisateur->setActif(false);
+
+        $em->persist($utilisateur);
+        $em->flush();
+
+        return $this -> render("/user/login.html.twig", []);
+
+    }*/
+
 
             // Permet dafficher le utillisateur
     /*/**

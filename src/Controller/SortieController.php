@@ -15,6 +15,7 @@ class SortieController extends AbstractController
     /**
      * @Route("/sortie/list", name="sortie_list")
      */
+
     public function list()
     {
         $sortieRepo = $this->getDoctrine()->getRepository(Sorties::class);
