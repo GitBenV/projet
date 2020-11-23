@@ -23,6 +23,9 @@ class UserController extends AbstractController
      */
     public function register(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {
+        /*   restriction USER */
+        $this->denyAccessUnlessGranted("ROLE_USER");
+        /*-------------------------*/
         $user = new Utilisateurs();
 
         $registerForm = $this->createForm(RegisterType::class, $user);

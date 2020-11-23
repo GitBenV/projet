@@ -18,6 +18,9 @@ class SortieController extends AbstractController
 
     public function list()
     {
+        /* restriction des pages role user*/
+        $this->denyAccessUnlessGranted("ROLE_USER");
+        /*-------------------------------------*/
         $sortieRepo = $this->getDoctrine()->getRepository(Sorties::class);
         $sorties = $sortieRepo->findSorties();
 
@@ -32,7 +35,7 @@ class SortieController extends AbstractController
     public function detail($id)
     {
         //@todo : récupérer la sortie en bdd
-
+        $this->denyAccessUnlessGranted("ROLE_USER");
         $sortieRepo = $this->getDoctrine()->getRepository(Sorties::class);
         $sortie = $sortieRepo->find($id);
 
