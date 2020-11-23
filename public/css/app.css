@@ -1,5 +1,5 @@
 body{
-    background-color : darkgrey;
+    background-color : silver;
 }
 
 .flash {
@@ -18,3 +18,24 @@ body{
     background-color: red;
 }
 
+#enter {
+    background: black;
+    font-family: Broadway;
+    font-size: 50px;
+    color: silver;
+    width: 400px;
+    height: 300px;
+}
+
+.imghome {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 200px;
+}
+
+h1{
+    font-family: Broadway;
+    font-size: 50px;
+}

@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user/register", name="user_register")
+     * @Route("/user/register", name="register")
      * @param Request $request
      * @param EntityManagerInterface $em
      * @param UserPasswordEncoderInterface $encoder
@@ -42,17 +42,18 @@ class UserController extends AbstractController
         ]);
     }
     /**
-     * @Route("/user/login", name="app_login")
+     * @Route("user/login", name="login")
     */
     public function login()
     {
-        return $this->render("user/index.html.twig", []);
+        return $this->render("user/login.html.twig", []);
     }
 
+
             // Permet dafficher le utillisateur
-    /**
-     * @Route("/user/login", name="app_login")
-    */
+    /*/**
+     * @Route("/user/login", name="login")
+
 
     public function list()
     {
@@ -61,46 +62,19 @@ class UserController extends AbstractController
         dump($utilisateurs);
 
         return $this->render("user/login.html.twig");
-    }
+    }*/
 
-    /**
+    /*/**
      * @Route("/user/profil", name="app_profil")
-     */
+
     public function profil()
     {
         return $this->render('user/profil.html.twig', []);
-    }
+    }*/
     /**
      * Symfony gère entièrement cette route
-     * @Route ("/logout", name="app_logout")
+     * @Route ("/logout", name="logout")
     */
     public function logout() {}
-
-    /*/**
-     * @Route("/login", name="login")
-
-
-        public function add(EntityManagerInterface $em)
-    {
-
-        $utilisateur= new Utilisateurs();
-        $utilisateur->setPseudo("Testo");
-        $utilisateur->setNom("Testa");
-        $utilisateur->setPrenom("Le Testeur");
-        $utilisateur->setTelephone(0616455645);
-        $utilisateur->setMail("test@gmail.com");
-        $utilisateur->setPassword("1234");
-        $utilisateur->setAdmin(true);
-        $utilisateur->setActif(true);
-        $utilisateur->setCampus(1);
-
-        //$em->persist($utilisateur);
-        //$em->flush();
-
-
-
-        return $this->render('user/login.html.twig');
-
-    }*/
 
 }

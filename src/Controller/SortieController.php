@@ -7,7 +7,6 @@ use App\Form\SortieType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SortieController extends AbstractController
@@ -46,7 +45,7 @@ class SortieController extends AbstractController
 
     public function add(EntityManagerInterface $em, Request $request)
     {
-
+        $this->denyAccessUnlessGranted("ROLE_USER");
         $sortie = new Sorties();
         $sortieForm= $this->CreateForm(SortieType::class, $sortie);
 

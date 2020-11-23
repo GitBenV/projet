@@ -1,10 +1,19 @@
 <nav>
     <ul>
-        <li><a href="{{ path('home') }}">Home</a></li>
-        <li><a href="{{ path('sortie_list') }}">Sortie</a></li>
-        <li><a href="{{ path('app_profil') }}">Profil</a></li>
-        {#<li><a href="{{ path('logout') }}">Logout</a></li>#}
-        <li><a href="{{ path('app_login') }}">Login</a></li>
-                {#<li><a href="">Add</a></li>#}
+        {# <li><a href="{{ path('app_profil') }}">Profil</a></li>#}
+        {% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
+            {% if is_granted ('ROLE_ADMIN')%}
+                <li><a href="{{ path('register') }}">Enregistrer un nouveau membre</a></li>
+            {% endif %}
+            <li><a href="{{ path('home') }}">Home</a></li>
+            <li><a href="{{ path('sortie_list') }}">Sortie</a></li>
+            <li><a href="{{ path('logout') }}">Se déconnecter</a></li>
+            <li><a href="{{ path('sortie_add') }}">Ajouter une sortie</a></li>
+            {% else %}
+                {% if 'login' in app.request.attributes.get("_route") %}
+                    {% else %}
+                <a id="porte" href="{{ path('login') }}">Porte d'entrer</a>
+                {% endif %}
+            {% endif %}
     </ul>
 </nav>

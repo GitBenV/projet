@@ -158,7 +158,7 @@ class Utilisateurs implements UserInterface
     /**
      * @return mixed
      */
-    public function getemail()
+    public function getEmail()
     {
         return $this->email;
     }
@@ -166,7 +166,7 @@ class Utilisateurs implements UserInterface
     /**
      * @param mixed $email
      */
-    public function setemail($email): void
+    public function setEmail($email): void
     {
         $this->email = $email;
     }
@@ -193,7 +193,11 @@ class Utilisateurs implements UserInterface
 
     public function getRoles()
     {
-        return ["ROLE_USER"];
+        if ($this->getAdmin()) {
+            return ["ROLE_ADMIN","ROLE_USER"];
+        } else {
+            return ["ROLE_USER"];
+        }
     }
 
     /**
