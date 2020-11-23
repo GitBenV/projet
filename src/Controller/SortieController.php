@@ -31,7 +31,6 @@ class SortieController extends AbstractController
      */
     public function detail($id)
     {
-        //@todo : récupérer la sortie en bdd
 
         $sortieRepo = $this->getDoctrine()->getRepository(Sorties::class);
         $sortie = $sortieRepo->find($id);
@@ -39,6 +38,7 @@ class SortieController extends AbstractController
         return $this->render('sortie/detail.html.twig', [
             "sortie" => $sortie
         ]);
+
     }
 
     /**
@@ -65,6 +65,17 @@ class SortieController extends AbstractController
         return $this->render('sortie/add.html.twig', [
             "sortieForm" => $sortieForm->createView()
         ]);
+    }
+
+    /**
+     * @Route ("/sortie/index", name="sortie_index")
+     */
+
+    public function affiche ()
+    {
+
+        $this->addFlash('success', ' Vous êtes bien inscrit à la sortie !');
+    return $this -> render("sortie/index.html.twig");
     }
 
 }
