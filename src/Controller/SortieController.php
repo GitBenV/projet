@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Inscriptions;
 use App\Entity\Sorties;
 use App\Form\SortieType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -72,8 +73,16 @@ class SortieController extends AbstractController
     /**
      * @Route("/sortie/index", name="sortie_index")
      */
-    public function affiche()
+    public function affiche(EntityManagerInterface $em)
     {
+        $inscription = new Inscriptions();
+        $inscription -> setDateinscription(new \DateTime());
+        $inscription -> setSortie();
+        $inscription -> setUtilisateur();
+
+        $em->persist($inscription);
+        $em->flush();
+
         $this->addFlash('success', 'Vous êtes bien inscrit à la sortie.');
 
         return $this->render("sortie/index.html.twig", []);
