@@ -24,12 +24,11 @@ class RegisterType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
+                'first_options' => ['label' => 'Password'],
                 'second_options' => ['label' => 'Repeat Password'],])
             ->add('admin')
-            ->add ('actif')
-            ->add('campus')
-        ;
+            ->add('actif')
+            ->add('campus');
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -38,4 +37,5 @@ class RegisterType extends AbstractType
             'data_class' => Utilisateurs::class,
         ]);
     }
+
 }
