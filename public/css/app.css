@@ -39,3 +39,13 @@ h1{
     font-family: Broadway;
     font-size: 50px;
 }
+
+#blaze{
+    color: darkgoldenrod;
+    font-family: "Bradley Hand ITC";
+    font-size: 30px;
+}
+
+#nav_link {
+    color: silver;
+}
