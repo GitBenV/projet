@@ -24,7 +24,7 @@
                 {% if 'login' in app.request.attributes.get("_route") %}
                 {% else %}
                 <li class="nav-item">
-                <a class="nav-link" href="{{ path('login') }}">Porte d'entrer</a>
+                <a id="porte" class="nav-link" href="{{ path('login') }}">Porte d'entrer</a>
                 </li>
                 {% endif %}
             {% endif %}
