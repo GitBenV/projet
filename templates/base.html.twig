@@ -14,7 +14,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <header class="text-center">
+                        <!--Change le h1 du home-->
                         {% block h1 %}<h1>Sortir.com</h1>{% endblock %}
+                        <!-- Intégration de la barre de navigatio -->
                         {% include ('inc/nav.html.twig') %}
                         {% block modal %}{% endblock %}
                         {% for label, messages in app.flashes(['success', 'warning']) %}
@@ -32,6 +34,7 @@
                     <img class="imghome" src="{{ asset('img/left.png') }}" alt="sortie" align="center">
                 </div>
                 <div class="col-md-4">
+                    <!--Affiche les differents main par rapport aux differentes routes-->
                 {% block main %}
                 {% endblock %}
                     <img class="imghome" src="{{ asset('img/mid.png') }}" alt="sortie" align="center">
@@ -46,6 +49,7 @@
                 </div>
             </div>
         </div>
+        <!--Script en cours d'utilisation-->
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

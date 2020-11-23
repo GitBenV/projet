@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-    {% block title %}Sortir.com | Login{% endblock %}
+    {% block title %}Sortir.com | Connection{% endblock %}
     {% block modal %}
         <!-- Button trigger modal -->
         <button id="enter" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -17,6 +17,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <!--formulaire de login-->
                         <form method="post">
                                 {# {% if error %}
                                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

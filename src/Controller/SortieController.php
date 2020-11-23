@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SortieController extends AbstractController
 {
+    /*liste les différentes sorties*/
     /**
      * @Route("/sortie/list", name="sortie_list")
      */

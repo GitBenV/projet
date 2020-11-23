@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends AbstractController
 {
+    /*Permet de rediriger et d'envoyer le formulaire d'inscription ainsi que d'encode le mdp dans la BDD*/
     /**
      * @Route("/user/register", name="register")
      * @param Request $request
@@ -41,6 +42,8 @@ class UserController extends AbstractController
             "registerForm"=> $registerForm->createView()
         ]);
     }
+
+    /* Fonction pour la connection */
     /**
      * @Route("user/login", name="login")
     */
@@ -71,6 +74,8 @@ class UserController extends AbstractController
     {
         return $this->render('user/profil.html.twig', []);
     }*/
+
+    /*Permet de se deco*/
     /**
      * Symfony gère entièrement cette route
      * @Route ("/logout", name="logout")

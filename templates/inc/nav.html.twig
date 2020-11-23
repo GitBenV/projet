@@ -12,7 +12,7 @@
             {% else %}
                 {% if 'login' in app.request.attributes.get("_route") %}
                     {% else %}
-                <a id="porte" href="{{ path('login') }}">Porte d'entrer</a>
+                <a href="{{ path('login') }}">Porte d'entrer</a>
                 {% endif %}
             {% endif %}
     </ul>

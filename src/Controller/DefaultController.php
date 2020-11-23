@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
+    /*Ouvre la page d'accueil*/
     /**
      * @Route("/", name="home")
      */
