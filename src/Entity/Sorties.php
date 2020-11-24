@@ -97,10 +97,6 @@ class Sorties
     {
         return $this->datedebut;
     }
-    /*public function getDatedebut($format = 'Y-m-d H:i:s')
-    {
-        return $this->datedebut->format($format);
-    }*/
 
     public function setDatedebut(\DateTimeInterface $datedebut): self
         {
