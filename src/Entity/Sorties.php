@@ -60,8 +60,8 @@ class Sorties
      */
     private $urlPhoto;
 
+    /*@Assert\NotBlank(message="Renseignez le nombre d'organisateur pour la sortie")*/
     /**
-     * @Assert\NotBlank(message="Renseignez le nombre d'organisateur pour la sortie")
      * @ORM\Column(type="integer")
      */
     private $organisateur;

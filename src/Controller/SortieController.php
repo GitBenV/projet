@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Inscriptions;
 use App\Entity\Sorties;
 use App\Form\SortieType;
+use App\Form\SortieTypeD;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,22 +54,24 @@ class SortieController extends AbstractController
     {
         $this->denyAccessUnlessGranted("ROLE_USER");
         $sortie = new Sorties();
-        $sortieForm= $this->CreateForm(SortieType::class, $sortie);
+        $sortieForm= $this->CreateForm(SortieType::class ,$sortie);
+        $sortieFormD= $this->CreateForm(SortieTypeD::class ,$sortie);
 
         $sortieForm->handleRequest($request);
-        if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
-            $em->persist($sortie);
-            $em->flush();
+        $sortieFormD->handleRequest($request);
+        if ($sortieForm->isSubmitted() && $sortieForm->isValid()) {
+            if ($sortieFormD->isSubmitted() && $sortieFormD->isValid()) {
+                $em->persist($sortie);
+                $em->flush();
 
-            $this->addFlash('success', 'La sortie a bien été créée !');
-            return $this->redirectToRoute('sortie_detail', [
-                'id' => $sortie->getId()
-            ]);
+                $this->addFlash('success', 'La sortie a bien été créée !');
+                return $this->redirectToRoute('sortie_detail', [
+                    'id' => $sortie->getId()
+                ]);
+            }
         }
-
-        return $this->render('sortie/add.html.twig', [
-            "sortieForm" => $sortieForm->createView()
-        ]);
+        return $this->render('sortie/add.html.twig',
+            ["sortieForm" => $sortieForm->createView(), "sortieFormD" => $sortieFormD->createView()]);
     }
     /**
      * @Route("/sortie/index", name="sortie_index")
