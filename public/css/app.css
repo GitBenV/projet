@@ -92,4 +92,21 @@ td {
 }
 #btn_enr{
     background-color: darkgoldenrod;
+    text-align: right;
+}
+
+.formG
+{
+    text-align: right;
+}
+
+.formD
+{
+    text-align: left;
+}
+
+#btn_sr
+{
+    background-color: darkgoldenrod;
+    text-align: right;
 }

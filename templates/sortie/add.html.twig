@@ -1,19 +1,32 @@
 {%  extends 'base.html.twig' %}
 
+{% block h2 %}
+<h2>Créer une sortie</h2>
+{%  endblock %}
+
 {% block add1 %}
-    <h2>Créer une sortie</h2>
+
+<div class="formG">
+
 
     {{ form_start(sortieForm) }}
     {{ form_widget(sortieForm) }}
-
+</div>
 
 {% endblock %}
 {% block add2 %}
+
+<div class="formD">
     {{ form_start(sortieFormD) }}
     {{ form_widget(sortieFormD) }}
-    <button type="submit">Créer une sortie</button>
+</div>
+    <div>
+    <br>
+    <button id="btn_sr" class="btn btn-primary" type="submit">Créer une sortie</button>
     {{ form_end(sortieForm) }}
     {{ form_end(sortieFormD) }}
+    </div>
+
 
 {% endblock %}
 

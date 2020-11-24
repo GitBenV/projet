@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Sorties;
-use Doctrine\DBAL\Types\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use \Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,11 +15,11 @@ class SortieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('datedebut')
-            ->add('duree')
-            ->add('datecloture')
-            ->add('nbinscriptionsmax')
+            ->add('nom', TextType::class, array ('label' => 'Nom :'))
+            ->add('datedebut', DateType::class, array('label' => 'Date de la sortie : '))
+            ->add('duree', DateType::class, array('label' => 'Duree :'))
+            ->add('datecloture', DateType::class, array('label' => 'Date de cloture :'))
+            ->add('nbinscriptionsmax', IntegerType::class, array('label' => "Nombre d'inscriptions max :" ))
 
         ;
     }
