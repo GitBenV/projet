@@ -37,9 +37,12 @@
         </form>
     </div>
 </nav>
-{%  block h2 %}
-    {% if 'login' in app.request.attributes.get("_route") %}
+{% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
     {% else %}
-    <a id="porte" href="{{ path('login') }}">|>>   Porte d'entrer   <<|</a>
-    {% endif %}
-{% endblock %}
+    {%  block h2 %}
+        {% if 'login' in app.request.attributes.get("_route") %}
+            {% else %}
+            <a id="porte" href="{{ path('login') }}">|>>   Porte d'entrer   <<|</a>
+            {% endif %}
+    {% endblock %}
+{% endif %}
