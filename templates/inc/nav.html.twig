@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
-    <a id="blaze" class="navbar-brand" >Sortir.com | Portes</a>
+    <img class="icon" rel="icon" alt="icon" src="{{ asset('favicon.ico') }}"><a  id="blaze" class="navbar-brand" >Sortir.com | Portes</a>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,6 +32,6 @@
 {%  block h2 %}
     {% if 'login' in app.request.attributes.get("_route") %}
     {% else %}
-    <a id="porte" href="{{ path('login') }}">Porte d'entrer</a>
+    <a id="porte" href="{{ path('login') }}">|>>   Porte d'entrer   <<|</a>
     {% endif %}
 {% endblock %}

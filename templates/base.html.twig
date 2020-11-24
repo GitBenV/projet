@@ -14,10 +14,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <header class="text-center">
-                        <!--Change le h1 du home-->
-                        {% block h1 %}<h1>Sortir.com</h1>{% endblock %}
                         <!-- Intégration de la barre de navigatio -->
                         {% include ('inc/nav.html.twig') %}
+                        <!--Change le h1 du home-->
+                        {% block h1 %}<h1>Sortir.com</h1>{% endblock %}
                         {% block h2 %}{% endblock %}
                         {% block modal %}{% endblock %}
                         {% for label, messages in app.flashes(['success', 'warning']) %}
@@ -31,17 +31,31 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-6">
+                    <!-- Utiliser en 2 part pour afficher plus agréablement tableau et profil-->
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {% block main %}
+                        <main>
+
+                        </main>
+                    {% endblock %}
+                    <!--Utiliser pour les grds tablo ou texte info exx annuler une sortie-->
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-4">
                     <img class="imghome" src="{{ asset('img/left.png') }}" alt="sortie" align="center">
                 </div>
                 <div class="col-md-4">
                     <!--Affiche les differents main par rapport aux differentes routes-->
                 {%  block mainhome %}
-
                 {% endblock %}
-                    {% block main %}
-
-                    {% endblock %}
                     <img class="imghome" src="{{ asset('img/mid.png') }}" alt="sortie" align="center">
                 </div>
                 <div class="col-md-4">

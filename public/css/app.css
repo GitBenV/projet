@@ -37,13 +37,13 @@ body{
 
 h1{
     font-family: Broadway;
-    font-size: 50px;
+    font-size: 4rem;
 }
 
 #blaze{
     color: darkgoldenrod;
     font-family: "Bradley Hand ITC";
-    font-size: 30px;
+    font-size: 2rem;
 }
 
 #nav_link {
@@ -52,7 +52,17 @@ h1{
 
 #porte {
     color: darkgoldenrod;
-    font-size: 50px;
+    font-size: 4rem;
     font-family: Broadway;
     position: relative;
+}
+p{
+    font-family: "Times New Roman";
+    font-size: 1.18rem;
+    color: black;
+}
+.h2home{
+    font-family: "AR BLANCA";
+    color: darkgoldenrod;
+    font-size: 2rem;
 }
