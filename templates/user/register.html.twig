@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block main %}
+{% block form_user %}
+    <h1 align="center">INSCRIPTION</h1>
     {# Mise en place du formulaire #}
+    <div class="form_user">
     {{ form_start(registerForm) }}
     {{ form_widget(registerForm) }}
-    <button type="submit">Enregistrer un(e) nouveau(elle) utilisateur(rice) !</button>
+    </div>
+    <div>
+    <br>
+        <button id="btn_enr" class="btn btn-primary" type="submit">Enregistrer un(e) nouveau(elle) utilisateur(rice) !</button>
     {{ form_end(registerForm) }}
-
+    </div>
 {% endblock %}
 
 {% block title %}Sortir.com | Inscription {% endblock %}

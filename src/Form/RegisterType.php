@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Utilisateurs;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -15,20 +18,21 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('nom')
-            ->add('prenom')
-            ->add('telephone')
-            ->add('email', EmailType::class)
+            ->add('username',TextType::class, array('label'=>'Pseudo :'))
+            ->add('nom',TextType::class, array('label'=>'Nom :'))
+            ->add('prenom',TextType::class, array('label'=>'Prénom :'))
+            ->add('telephone', TelType::class, array('label'=>'Téléphone :'))
+            ->add('email', EmailType::class, array('label'=>'Email :'))
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
                 'required' => true,
-                'first_options' => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],])
-            ->add('admin')
-            ->add('actif')
+                'first_options' => ['label' => 'Mot de passe :'],
+                'second_options' => ['label' => 'Confirmer le mot de passe :'],])
+            ->add('admin', CheckboxType::class ,array('label'=>'Admin :'))
+            ->add('actif', CheckboxType::class ,array('label'=>'Actif :'))
             ->add('campus');
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

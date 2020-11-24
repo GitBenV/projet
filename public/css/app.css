@@ -85,3 +85,12 @@ td {
     text-align: center;
     background-color: #ffffff;
      }
+.form_user{
+    background-color: darkgoldenrod;
+    text-align: right;
+    padding-right: 10rem;
+}
+#btn_enr{
+    background-color: darkgoldenrod;
+    text-align: right;
+}
