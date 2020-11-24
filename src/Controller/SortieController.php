@@ -77,8 +77,8 @@ class SortieController extends AbstractController
     {
         $inscription = new Inscriptions();
         $inscription -> setDateinscription(new \DateTime());
-        $inscription -> setSortie();
-        $inscription -> setUtilisateur();
+        $inscription -> getSortie();
+        $inscription -> getUtilisateur();
 
         $em->persist($inscription);
         $em->flush();
