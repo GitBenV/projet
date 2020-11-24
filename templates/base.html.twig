@@ -18,6 +18,7 @@
                         {% block h1 %}<h1>Sortir.com</h1>{% endblock %}
                         <!-- Intégration de la barre de navigatio -->
                         {% include ('inc/nav.html.twig') %}
+                        {% block h2 %}{% endblock %}
                         {% block modal %}{% endblock %}
                         {% for label, messages in app.flashes(['success', 'warning']) %}
                             {% for message in messages %}
@@ -35,8 +36,12 @@
                 </div>
                 <div class="col-md-4">
                     <!--Affiche les differents main par rapport aux differentes routes-->
-                {% block main %}
+                {%  block mainhome %}
+
                 {% endblock %}
+                    {% block main %}
+
+                    {% endblock %}
                     <img class="imghome" src="{{ asset('img/mid.png') }}" alt="sortie" align="center">
                 </div>
                 <div class="col-md-4">

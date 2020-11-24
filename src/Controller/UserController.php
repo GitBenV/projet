@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Utilisateurs;
 use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -10,9 +11,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 
 class UserController extends AbstractController
 {
+    /**
+     * @Route("/accueil/home", name="home")
+     */
+    //Page d'accueil
+    public function index()
+    { //Elle dois se contenter d'afficher la page d'accueil qui contiendra le formulaire
+        return $this->render('accueil/home.html.twig');
+    }
+
     /*Permet de rediriger et d'envoyer le formulaire d'inscription ainsi que d'encode le mdp dans la BDD*/
     /**
      * @Route("/user/register", name="register")
@@ -24,37 +36,58 @@ class UserController extends AbstractController
     public function register(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {
         /*   restriction USER */
-        $this->denyAccessUnlessGranted("ROLE_USER");
+        $this->denyAccessUnlessGranted("ROLE_ADMIN");
         /*-------------------------*/
-        $user = new Utilisateurs();
 
+        // Générons le formulaire à partir de notre UserType
+        $user = new Utilisateurs();
         $registerForm = $this->createForm(RegisterType::class, $user);
 
+        // Traitement du formulaire une fois envoyé
         $registerForm->handleRequest($request);
         if ($registerForm->isSubmitted() && $registerForm->isValid()){
-            //hasher le mot de passe
+
+            //encodage du mot de passe
             $hashed = $encoder->encodePassword($user, $user->getPassword());
             $user ->setPassword($hashed);
 
 
             $em->persist($user);
             $em->flush();
+            return $this->redirectToRoute('dashboard');
         }
 
+        //En cas d'erreur on reste sur le formulaire
         return $this->render("user/register.html.twig", [
             "registerForm"=> $registerForm->createView()
         ]);
+    }
+
+    /**
+     * @Route("accueil/dashboard", name="dashboard")
+     */
+    public function dashboard(){
+        return $this->render('accueil/dashboard.html.twig');
     }
 
     /* Fonction pour la connection */
     /**
      * @Route("user/login", name="login")
     */
-    public function login()
+    public function login(Request $request, AuthenticationUtils $authenticationUtils)
     {
-        return $this->render("user/login.html.twig", []);
-    }
+        //Récupères les erreurs de connexion s'il y en a
+        $error = $authenticationUtils->getLastAuthenticationError();
 
+        // Récupères l'identifiant rentré par l'utilisateur
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        //Renvoie l'utilisateur sur la page d'acceuil si la connexion est échouée.
+        return $this->render('user/login.html.twig', array(
+            'last_username' => $lastUsername,
+            'error' => $error,
+        ));
+    }
     /*
      * @Route ("/user/login", name="login")
 

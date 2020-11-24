@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass=UtilisateursRepository::class)
  */
+
 class Utilisateurs implements UserInterface
 {
     /**
@@ -59,6 +60,13 @@ class Utilisateurs implements UserInterface
     private $roles;
 
     /**
+     * @param mixed $roles
+     */
+    public function setRoles($roles): void
+    {
+        $this->roles = $roles;
+    }
+    /**
      * @ORM\Column(type="boolean")
      */
 
@@ -94,7 +102,7 @@ class Utilisateurs implements UserInterface
     /**
      * @return mixed
      */
-    public function getusername()
+    public function getUsername()
     {
         return $this->username;
     }
@@ -102,7 +110,7 @@ class Utilisateurs implements UserInterface
     /**
      * @param mixed $username
      */
-    public function setusername($username): void
+    public function setUsername($username): void
     {
         $this->username = $username;
     }

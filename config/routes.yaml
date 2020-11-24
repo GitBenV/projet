@@ -1,3 +1,15 @@
 index:
     path: /
-    controller: App\Controller\DefaultController::index
+    controller: App\Controller\UserController::index
+
+login:
+    path: /login
+    controller: App\Controller\UserController::login
+
+dashboard:
+    path: /home
+    controller: App\Controller\UserController::dashboard
+
+register:
+    path: /register
+    controller: App\Controller\UserController::register

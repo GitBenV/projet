@@ -12,7 +12,7 @@ security:
             provider: our_db_provider
             anonymous: ~
             form_login:
-                login_path: login
+                login_path: index
                 check_path: login
             logout:
                 path: logout
@@ -27,3 +27,6 @@ security:
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/security, roles: IS_AUTHENTICATED_ANONYMOUSLY }

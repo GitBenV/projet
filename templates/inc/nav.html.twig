@@ -21,12 +21,6 @@
                 <li class="nav-item">
                     <a id="nav_link" class="nav-link" href="{{ path('sortie_add') }}">| Ajouter une sortie</a></li>
             {% else %}
-                {% if 'login' in app.request.attributes.get("_route") %}
-                {% else %}
-                <li class="nav-item">
-                <a id="porte" class="nav-link" href="{{ path('login') }}">Porte d'entrer</a>
-                </li>
-                {% endif %}
             {% endif %}
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -35,3 +29,9 @@
         </form>
     </div>
 </nav>
+{%  block h2 %}
+    {% if 'login' in app.request.attributes.get("_route") %}
+    {% else %}
+    <a id="porte" href="{{ path('login') }}">Porte d'entrer</a>
+    {% endif %}
+{% endblock %}
