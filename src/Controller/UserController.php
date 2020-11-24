@@ -88,6 +88,17 @@ class UserController extends AbstractController
             'error' => $error,
         ));
     }
+    /**
+    * @Route("/user/profil", name="profil")
+    */
+
+    public function profil()
+   {
+       return $this->render('user/profil.html.twig', []);
+   }
+
+
+
     /*
      * @Route ("/user/login", name="login")
 
@@ -125,14 +136,6 @@ public function add(EntityManagerInterface $em)
         dump($utilisateurs);
 
         return $this->render("user/login.html.twig");
-    }*/
-
-    /*/**
-     * @Route("/user/profil", name="app_profil")
-
-    public function profil()
-    {
-        return $this->render('user/profil.html.twig', []);
     }*/
 
     /*Permet de se deco*/

@@ -2,6 +2,8 @@
 {% block main %}
 {% if is_granted ('ROLE_ADMIN')%}
    <a id="admin" href="{{ path('admin_home') }}">Administration</a>
-   {% else %}
+{% endif %}
+{% if is_granted ('ROLE_USER') %}
+      <a id="profil" href="{{ path('profil') }}">Mon Profil !!!!</a>
 {% endif %}
 {% endblock %}
