@@ -66,3 +66,22 @@ p{
     color: darkgoldenrod;
     font-size: 2rem;
 }
+
+.table_sortie {
+    border: medium solid;
+    border-collapse: collapse;
+        }
+th {
+    font-family: monospace;
+    border: thin solid;
+    padding: 5px;
+    text-align: center;
+    background-color: #D3D2C8;
+    }
+td {
+    font-family: sans-serif;
+    border: thin solid #6495ed;
+    padding: 5px;
+    text-align: center;
+    background-color: #ffffff;
+     }

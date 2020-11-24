@@ -3,11 +3,15 @@
 {% block main %}
     <h2>Filtrer les sorties</h2>
 
-    <table id="sortie">
+        <table class="table_sortie col-md-12">
         <thead>
             <tr>
                 <th>Nom de la sortie</th>
-                <th>date début</th>
+                <th>Date de la sortie</th>
+                <th>Clotûre</th>
+                <th>Inscrits/places</th>
+                <th>Etat</th>
+                <th>Organisateur</th>
                 <th>agir</th>
             </tr>
         </thead>
@@ -15,18 +19,17 @@
             {% for sortie in sorties %}
             <tr>
                 <td>{{ sortie.nom }}</td>
+                <td>date</td>
+                <td>cloture</td>
+                <td>{{ sortie.nbinscriptionsmax }}</td>
+                <td>{{ sortie.etat }}</td>
                 <td>{{ sortie.organisateur }}</td>
                 <td><a href="{{ path('sortie_detail', {'id':sortie.id}) }}">Afficher</a></td>
             </tr>
             {% endfor %}
         </tbody>
 
-
-
     </table>
-
-
-
 
     {# todo: afficher les sorties  #}
 {% endblock %}
