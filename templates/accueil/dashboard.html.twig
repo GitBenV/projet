@@ -1,1 +1,7 @@
 {% extends 'user/index.html.twig' %}
+{% block main %}
+{% if is_granted ('ROLE_ADMIN')%}
+   <a id="admin" href="{{ path('admin_home') }}">Administration</a>
+   {% else %}
+{% endif %}
+{% endblock %}
