@@ -16,16 +16,24 @@
                 {% endif %}
                 <li class="nav-item">
                     <a id="nav_link" class="nav-link" href="{{ path('sortie_list') }}">| Sortie</a></li>
-                <li class="nav-item">
-                    <a id="nav_link" class="nav-link" href="{{ path('logout') }}">| Se déconnecter</a></li>
+
                 <li class="nav-item">
                     <a id="nav_link" class="nav-link" href="{{ path('sortie_add') }}">| Ajouter une sortie</a></li>
             {% else %}
             {% endif %}
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            {% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
+            <li class="nav-item">
+                <a id="profil" href="{{ path('profil') }}">Mon Profil &nbsp;   </a></li>
+            {% if is_granted ('ROLE_ADMIN')%}
+            <li class="nav-item">
+                <a id="admin" href="{{ path('admin_home') }}">Administration &nbsp;   </a></li>
+            {% endif %}
+            <li class="nav-item">
+                <a id="logout" href="{{ path('logout') }}">Se déconnecter</a></li>
+            {% else %}
+            {% endif %}
         </form>
     </div>
 </nav>
