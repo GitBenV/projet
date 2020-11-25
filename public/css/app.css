@@ -72,11 +72,7 @@ h2{
     font-family: Broadway;
     position: relative;
 }
-p{
-    font-family: "Times New Roman";
-    font-size: 1.18rem;
-    color: black;
-}
+
 .h2home{
     font-family: "AR BLANCA";
     color: darkgoldenrod;
@@ -84,21 +80,20 @@ p{
 }
 
 .table_sortie {
+    font-family: "AR BLANCA";
+    font-size: 1.3rem;
     border: medium solid;
     border-collapse: collapse;
+    text-align: center;
         }
 th {
-    font-family: monospace;
     border: thin solid;
     padding: 5px;
-    text-align: center;
-    background-color: #D3D2C8;
+    background-color: darkgoldenrod;
     }
 td {
-    font-family: sans-serif;
-    border: thin solid #6495ed;
+    border: thin solid darkgoldenrod;
     padding: 5px;
-    text-align: center;
     background-color: #ffffff;
      }
 .form_user{
@@ -142,4 +137,13 @@ td {
 #inputFile
 {
     font-family: "Times New Roman";
+}
+
+.description
+{
+    text-align: center;
+    font-family: "AR BLANCA";
+    font-size: 1.6rem;
+    border: medium solid darkgoldenrod;
+    border-collapse: collapse;
 }

@@ -2,11 +2,26 @@
 {%  extends 'base.html.twig' %}
 
 {% block main %}
-    <h2>{{ sortie.nom }}</h2>
 
-    <h2>{{ sortie.organisateur }}</h2>
+<h2>Inscrivez-vous à la sortie</h2>
 
-    <button type="submit"><a href="{{ path('sortie_index') }}">S'inscrire à la sortie</a></button>
+    <div class="description">
+
+
+            <p>{{ sortie.nom }}</p>
+            <p>Date : {{ sortie.datedebut|date("d/m/Y") }}</p>
+
+            <p>Fermeture des inscriptions : {{ sortie.datecloture|date("d/m/Y") }}</p>
+            <p>Durée : {{ sortie.duree|date("H:i") }}</p>
+
+
+        <p>{{ sortie.descriptioninfos }}</p>
+
+
+        <button id="btn_enr" type="submit"><a id="btn_enr" href="{{ path('sortie_index') }}">S'inscrire à la sortie</a></button>
+
+
+    </div>
 
 
 {% endblock %}
