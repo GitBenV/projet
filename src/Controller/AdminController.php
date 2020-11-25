@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminController extends AbstractController
 
 {
+    //Page Dédier aux Admin
     /**
      * @Route ("/admin", name="admin_home")
      */
@@ -19,4 +20,5 @@ class AdminController extends AbstractController
     {
         return new Response("on est la");
     }
+
 }

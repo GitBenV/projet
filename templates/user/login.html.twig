@@ -29,8 +29,6 @@
                             <div class="form-group">
                                 <label for="password" class="sr-only">Mot de passe : </label>
                                 <input type="password" name="_password" class="form-control" id="password" placeholder="*******" required>
-                                Remember me
-                                <input type="hidden" name="_target_path" value="dashboard" />
                                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                             </div>
                             <div class="form-check">

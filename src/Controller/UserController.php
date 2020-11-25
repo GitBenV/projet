@@ -25,57 +25,11 @@ class UserController extends AbstractController
     { //Elle dois se contenter d'afficher la page d'accueil qui contiendra le formulaire
         return $this->render('accueil/home.html.twig');
     }
-
-    /*Permet de rediriger et d'envoyer le formulaire d'inscription ainsi que d'encode le mdp dans la BDD*/
-    /**
-     * @Route("/user/register", name="register")
-     * @param Request $request
-     * @param EntityManagerInterface $em
-     * @param UserPasswordEncoderInterface $encoder
-     * @return Response
-     */
-    public function register(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
-    {
-        /*   restriction USER */
-        $this->denyAccessUnlessGranted("ROLE_ADMIN");
-        /*-------------------------*/
-
-        // Générons le formulaire à partir de notre UserType
-        $user = new Utilisateurs();
-        $registerForm = $this->createForm(RegisterType::class, $user);
-
-        // Traitement du formulaire une fois envoyé
-        $registerForm->handleRequest($request);
-        if ($registerForm->isSubmitted() && $registerForm->isValid()){
-
-            //encodage du mot de passe
-            $hashed = $encoder->encodePassword($user, $user->getPassword());
-            $user ->setPassword($hashed);
-
-
-            $em->persist($user);
-            $em->flush();
-            return $this->redirectToRoute('dashboard');
-        }
-
-        //En cas d'erreur on reste sur le formulaire
-        return $this->render("user/register.html.twig", [
-            "registerForm"=> $registerForm->createView()
-        ]);
-    }
-
-    /**
-     * @Route("accueil/dashboard", name="dashboard")
-     */
-    public function dashboard(){
-        return $this->render('accueil/dashboard.html.twig');
-    }
-
-    /* Fonction pour la connection */
+    /* Connection */
     /**
      * @Route("user/login", name="login")
-    */
-    public function login(Request $request, AuthenticationUtils $authenticationUtils)
+     */
+    public function login(AuthenticationUtils $authenticationUtils)
     {
         //Récupères les erreurs de connexion s'il y en a
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -89,6 +43,53 @@ class UserController extends AbstractController
             'error' => $error,
         ));
     }
+    //Permet d'envoyer le formulaire d'inscription ainsi que d'encoder le mdp dans la BDD
+    /**
+     * @Route("/user/register", name="register")
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @param UserPasswordEncoderInterface $encoder
+     * @return Response
+     */
+    public function register(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
+    {
+        /*   restriction USER */
+        $this->denyAccessUnlessGranted("ROLE_ADMIN");
+        /*-------------------------*/
+
+        // Générons le formulaire à partir de notre UserType(RegisterType)
+        $user = new Utilisateurs();
+        $registerForm = $this->createForm(RegisterType::class, $user);
+
+        // Traitement du formulaire
+        $registerForm->handleRequest($request);
+        if ($registerForm->isSubmitted() && $registerForm->isValid()){
+
+            //encodage du mot de passe
+            $hashed = $encoder->encodePassword($user, $user->getPassword());
+            $user ->setPassword($hashed);
+
+            //Envoie en BDD avec le MdpEncode
+            $em->persist($user);
+            $em->flush();
+            //Redirection
+            return $this->redirectToRoute('dashboard');
+        }
+
+        //En cas d'erreur on reste sur le formulaire et envoie um message
+        return $this->render("user/register.html.twig", [
+            "registerForm"=> $registerForm->createView()
+        ]);
+    }
+
+    //
+    /**
+     * @Route("accueil/dashboard", name="dashboard")
+     */
+    public function dashboard(){
+        return $this->render('accueil/dashboard.html.twig');
+    }
+
 
 
             // Permet dafficher le utillisateur
