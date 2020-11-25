@@ -1,9 +1,73 @@
 {% extends 'base.html.twig' %}
 
+{% block h2 %}<h2>Profil de l'utilisateur</h2>{% endblock %}
+{% block add1 %}
+    <div>
+    <img class="img_profil" src="img" alt="img_profil">
+    </div>
 
-{% block main %}
+{% endblock %}
+{% block add2 %}
 
-    <h2>Profil de l'utilisateur</h2>
-
-
-{%  endblock %}
+    <form role="form" id="fprofil">
+        <div class="form-group">
+            <label for="username">
+                Pseudo :
+            </label>
+            <input type="text" class="form-control" id="username" disabled="disabled" placeholder="{{ app.user.username }}"/>
+        </div>
+        <div class="form-group">
+            <label for="nom">
+                Nom :
+            </label>
+            <input type="text" class="form-control" id="nom" disabled="disabled" placeholder="{{ app.user.nom }}" />
+        </div>
+        <div class="form-group">
+            <label for="prenom">
+                Prénom :
+            </label>
+            <input type="text" class="form-control" id="prenom" disabled="disabled" placeholder="{{ app.user.prenom}}"/>
+        </div>
+        <div class="form-group">
+            <label for="campus">
+                Campus :
+            </label>
+            <input type="text" class="form-control" id="campus" disabled="disabled" placeholder="{{ app.user.campus }}" />
+        </div>
+        <div class="form-group">
+            <label for="telephone">
+                Téléphone :
+            </label>
+            <input type="tel" class="form-control" id="telephone" disabled="disabled" placeholder="{{ app.user.telephone }}" />
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend"><span class="input-group-text" aria-label="arobase">@</span></div>
+            <input type="email" class="form-control" id="email" disabled="disabled" placeholder="{{ app.user.email }}"/>
+        </div>
+        <button id="btn_enr" class="btn btn-blue">
+            <a href="{{ path('profil_edit') }}">Modifier le profil</a>
+        </button>
+    </form>
+    <div id="fprofil" class="form">
+        <br>
+        <a>Vous pouvez Modifier votre mot de passe ci-dessous.</a>
+        <form method="post">
+            <div class="form-field">
+                <label for="editpass">Mot de passe :</label>
+                <input type="password" id="editpass" name="pass" class="form-control">
+            </div>
+            <div class="form-field">
+                <label for="verifpass">Confirmer le mot de passe :</label>
+                <input type="password" id="verifpass" name="pass2" class="form-control">
+            </div>
+            <button id="btn_enr" class="btn btn-blue">
+                Modifier le mot de passe
+            </button>
+        </form>
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

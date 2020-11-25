@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark ">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <img class="icon" rel="icon" alt="icon" src="{{ asset('favicon.ico') }}"><a  id="blaze" class="navbar-brand" >Sortir.com | Portes</a>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="navbar-collapse collapse" id="navbarsExampleDefault" style="">
+    <div class="navbar-collapse collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('home') }}">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" id="hlimk" href="{{ path('home') }}">Home<span class="sr-only">(current)</span></a>
             </li>
             {% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
                 {% if is_granted ('ROLE_ADMIN')%}
@@ -25,13 +25,13 @@
         <form class="form-inline my-2 my-lg-0">
             {% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
             <li class="nav-item">
-                <a id="profil" href="{{ path('profil') }}">Mon Profil &nbsp;   </a></li>
+                <a id="profil" class="link" href="{{ path('profil') }}">Mon Profil &nbsp;   </a></li>
             {% if is_granted ('ROLE_ADMIN')%}
             <li class="nav-item">
-                <a id="admin" href="{{ path('admin_home') }}">Administration &nbsp;   </a></li>
+                <a id="admin" class="link" href="{{ path('admin_home') }}">Administration &nbsp;   </a></li>
             {% endif %}
             <li class="nav-item">
-                <a id="logout" href="{{ path('logout') }}">Se déconnecter</a></li>
+                <a id="logout" class="link" href="{{ path('logout') }}">Se déconnecter</a></li>
             {% else %}
             {% endif %}
         </form>

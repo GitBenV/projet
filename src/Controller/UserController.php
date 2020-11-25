@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Utilisateurs;
+use App\Form\EditProfileType;
 use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -88,55 +89,63 @@ class UserController extends AbstractController
             'error' => $error,
         ));
     }
-    /**
-    * @Route("/user/profil", name="profil")
-    */
-
-    public function profil()
-   {
-       return $this->render('user/profil.html.twig', []);
-   }
-
-
-
-    /*
-     * @Route ("/user/login", name="login")
-
-
-public function add(EntityManagerInterface $em)
-    {
-
-        $utilisateur = new Utilisateurs();
-        $utilisateur->setusername("titi");
-        $utilisateur->setNom("tutu");
-        $utilisateur->setPrenom("toto");
-        $utilisateur->setTelephone(145257896);
-        $utilisateur->setEmail("titi@sortie.fr");
-        $utilisateur->setPassword("titi1");
-        $utilisateur->setAdmin(true);
-        $utilisateur->setActif(false);
-
-        $em->persist($utilisateur);
-        $em->flush();
-
-        return $this -> render("/user/login.html.twig", []);
-
-    }*/
 
 
             // Permet dafficher le utillisateur
-    /*/**
-     * @Route("/user/login", name="login")
-
+    /**
+     * @Route("/user/profil", name="profil")
+     */
 
     public function list()
     {
-        $utilisateursrepo = $this->getDoctrine()->getRepository(Utilisateurs::class);
-        $utilisateurs = $utilisateursrepo->findAll();
-        dump($utilisateurs);
 
-        return $this->render("user/login.html.twig");
-    }*/
+        return $this->render("user/profil.html.twig", []);
+
+    }
+    /**
+     * @Route("/user/profil_edit", name="profil_edit")
+     */
+    public function editProfils(Request $request)
+    {
+        $user = $this->getUser();
+        $editForm = $this->createForm(EditProfileType::class, $user);
+
+        // Traitement du formulaire une fois envoyé
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            $this->addFlash('message', 'Profil mis à jour');
+            return $this->redirectToRoute('dashboard');
+        }
+        return $this->render("user/profil_edit.html.twig", [
+            "editForm"=> $editForm->createView()
+        ]);
+    }
+    /**
+     * @Route("/user/profil", name="profil")
+     */
+    public function editPass(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        if($request->isMethod('POST')) {
+            $em = $this->getDoctrine()->getManager();
+
+            $user = $this->getUser();
+            //On verifie si les 2mdp sont identique
+            if ($request->request->get('pass') == $request->request->get('pass2')) {
+                $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('pass')));
+                /*Mise a jour dans la BDD*/
+                $em->flush();
+                $this->addFlash('message','Mot de passe mise a jour');
+                return $this->redirectToRoute('dashboard');
+            }else{
+                $this->addFlash('error', 'les mots de passe doivent être identique');
+            }
+        }
+        return $this->render("user/profil.html.twig");
+    }
 
     /*Permet de se deco*/
     /**
@@ -146,3 +155,57 @@ public function add(EntityManagerInterface $em)
     public function logout() {}
 
 }
+/*
+   * @Route("/user/profil", name="profil")
+   *
+
+   public function profil(EntityManagerInterface $em)
+   {
+       $user = new Utilisateurs();
+       $user->getId();
+       $user->getUsername();
+       $user->getNom();
+       $user->getPrenom();
+       $user->getTelephone();
+       $user->getEmail();
+       $user->getPassword();
+       $user->getAdmin();
+       $user->getCampus();
+       $user->setActif(null);
+
+
+
+       $em->flush();
+
+       $this->addFlash('success', 'Voici votre profil.');
+
+       return $this->render("user/profil.html.twig", []);
+
+  }*/
+
+
+
+/*
+ * @Route ("/user/login", name="login")
+
+
+public function add(EntityManagerInterface $em)
+{
+
+    $utilisateur = new Utilisateurs();
+    $utilisateur->setusername("titi");
+    $utilisateur->setNom("tutu");
+    $utilisateur->setPrenom("toto");
+    $utilisateur->setTelephone(145257896);
+    $utilisateur->setEmail("titi@sortie.fr");
+    $utilisateur->setPassword("titi1");
+    $utilisateur->setAdmin(true);
+    $utilisateur->setActif(false);
+
+    $em->persist($utilisateur);
+    $em->flush();
+
+    return $this -> render("/user/login.html.twig", []);
+
+}*/
+

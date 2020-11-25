@@ -37,7 +37,11 @@ body{
 
 h1{
     font-family: Broadway;
-    font-size: 4rem;
+    font-size: 3rem;
+}
+h2{
+    font-family: Broadway;
+    font-size: 3rem;
 }
 
 #blaze{
@@ -47,7 +51,19 @@ h1{
 }
 
 #nav_link {
+    font-family: "Times New Roman";
     color: silver;
+    font-size: 1.3em;
+
+}
+.link{
+    font-family: "Times New Roman";
+    color: darkgoldenrod;
+    font-size: 1.3em;
+}
+#hlimk{
+    font-family: "Times New Roman";
+    font-size: 1.4em;
 }
 
 #porte {
@@ -93,6 +109,7 @@ td {
 #btn_enr{
     background-color: darkgoldenrod;
     text-align: right;
+    color: black;
 }
 
 .formG
@@ -109,4 +126,20 @@ td {
 {
     background-color: darkgoldenrod;
     text-align: right;
+}
+
+.img_profil
+{
+    border: medium solid darkgoldenrod;
+    float: right;
+    width : 22rem;
+    height: 22rem;
+}
+#fprofil
+{
+   font-family: Castellar;
+}
+#inputFile
+{
+    font-family: "Times New Roman";
 }

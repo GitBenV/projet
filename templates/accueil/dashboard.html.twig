@@ -1,3 +1,8 @@
 {% extends 'user/index.html.twig' %}
 {% block main %}
+    {% for message in app.flashes('message') %}
+    <div class="alert alert-success" role="alert">
+      {{message}}
+    </div>
+    {% endfor %}
 {% endblock %}
