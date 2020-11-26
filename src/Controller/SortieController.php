@@ -8,9 +8,10 @@ use App\Form\SortieType;
 use App\Form\SortieTypeD;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\HttpFoundation\Request;
+
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class SortieController extends AbstractController
 {
@@ -80,14 +81,15 @@ class SortieController extends AbstractController
     public function affiche(EntityManagerInterface $em)
     {
         $inscription = new Inscriptions();
-        $inscription -> setDateinscription(new \DateTime());
+        $inscription -> setDateinscription(new DateTime());
         $user = $this->getUser();
-        $inscription -> getSortie();
         $inscription -> setUtilisateur($user);
+        //$sortie = $this->getSortie(); // Sortie.php
+        //$inscription ->setSortie($sortie);
+        //dump($inscription);
 
-
-        $em->persist($inscription);
-        $em->flush();
+        $em ->persist($inscription);
+        $em ->flush();
 
         $this->addFlash('success', 'Vous êtes bien inscrit à la sortie.');
 

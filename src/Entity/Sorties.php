@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use App\Repository\SortiesRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -75,7 +76,11 @@ class Sorties
      * @ORM\ManyToOne(targetEntity="App\Entity\Villes", inversedBy="sorties")
      */
     private $ville;
-
+//////////////////////////////////////////////
+    ///public function getSortie(): self {     //
+       // return $this;                       //
+    ///}                                       //
+//////////////////////////////////////////////
     public function getId(): ?int
     {
         return $this->id;
