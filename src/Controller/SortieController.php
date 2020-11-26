@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
+
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -36,11 +37,15 @@ class SortieController extends AbstractController
     /**
      * @Route("/sortie/{id}", name="sortie_detail", requirements={"id": "\d+"})
      */
+
     public function detail($id)
     {
         //@todo : récupérer la sortie en bdd
+        // donne les droit USER
         $this->denyAccessUnlessGranted("ROLE_USER");
+        //recup la bdd
         $sortieRepo = $this->getDoctrine()->getRepository(Sorties::class);
+        //trouve l'id
         $sortie = $sortieRepo->find($id);
 
         return $this->render('sortie/detail.html.twig', [
