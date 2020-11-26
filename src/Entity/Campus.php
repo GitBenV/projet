@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Campus
 {
+    public function __toString()
+    {
+        return $this-> nomcampus;
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

@@ -64,6 +64,11 @@
                 Modifier le mot de passe
             </button>
         </form>
+        <button id="togg1" onclick="">Cliquez-moi !</button>
+        <div id="d1">
+            <p>Ce texte appartient au premier div de ma page</p>
+            <p>Ce deuxième paragraphe également</p>
+        </div>
         {% for message in app.flashes('error') %}
             <div class="alert alert-danger" role="alert">
                 {{message}}
