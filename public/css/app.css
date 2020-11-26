@@ -110,11 +110,14 @@ td {
 .formG
 {
     text-align: right;
+    border-right: thin solid black;
+    padding-right: 1rem;
 }
 
 .formD
 {
     text-align: left;
+
 }
 
 #btn_sr
