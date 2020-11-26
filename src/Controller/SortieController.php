@@ -18,7 +18,7 @@ class SortieController extends AbstractController
 {
     /*liste les différentes sorties*/
     /**
-     * @Route("/sortie/list", name="sortie_list")
+     * @Route("/sortie/list/", name="sortie_list")
      */
 
     public function list()
@@ -28,6 +28,7 @@ class SortieController extends AbstractController
         /*-------------------------------------*/
         $sortieRepo = $this->getDoctrine()->getRepository(Sorties::class);
         $sorties = $sortieRepo->findSorties();
+
 
         return $this->render('sortie/list.html.twig', [
             "sorties" => $sorties

@@ -13,7 +13,7 @@
         <p>Durée : {{ sortie.duree|date("H:i") }}</p>
         <p>{{ sortie.descriptioninfos }}</p>
         <br>
-        {% if ('datecloture') < ('new \DateTime()') %}
+        {% if sortie.datecloture < date() %}
             <p>Sortie Cloturée</p>
         {% else %}
             {% block btn %}
