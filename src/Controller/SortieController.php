@@ -75,25 +75,29 @@ class SortieController extends AbstractController
         return $this->render('sortie/add.html.twig',
             ["sortieForm" => $sortieForm->createView(), "sortieFormD" => $sortieFormD->createView()]);
     }
+
+
     /**
-     * @Route("/sortie/index", name="sortie_index")
+     * @Route("/sortie/index/{id}", name="sortie_index", requirements={"id": "\d+"})
      */
-    public function affiche(EntityManagerInterface $em)
+    public function inscription($id, EntityManagerInterface $em)
     {
+        $this->denyAccessUnlessGranted("ROLE_USER");
+        $sortieRepo = $this->getDoctrine()->getRepository(Sorties::class);
+        $sortie = $sortieRepo->find($id);
+
         $inscription = new Inscriptions();
-        $inscription -> setDateinscription(new DateTime());
+        $inscription -> setDateinscription(new \DateTime());
         $user = $this->getUser();
         $inscription -> setUtilisateur($user);
-        //$sortie = $this->getSortie(); // Sortie.php
-        //$inscription ->setSortie($sortie);
-        //dump($inscription);
+        $inscription -> setSortie($sortie);
 
         $em ->persist($inscription);
         $em ->flush();
 
         $this->addFlash('success', 'Vous êtes bien inscrit à la sortie.');
 
-        return $this->render("sortie/index.html.twig", []);
+        return $this->render("sortie/index.html.twig", ["sortie" => $sortie]);
     }
 
 }

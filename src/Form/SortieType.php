@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+
 class SortieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -17,7 +18,7 @@ class SortieType extends AbstractType
         $builder
             ->add('nom', TextType::class, array ('label' => 'Nom :'))
             ->add('datedebut', DateType::class, array('label' => 'Date de la sortie : '))
-            ->add('duree', DateType::class, array('label' => 'Duree :'))
+            ->add('duree')
             ->add('datecloture', DateType::class, array('label' => 'Date de cloture :'))
             ->add('nbinscriptionsmax', IntegerType::class, array('label' => "Nombre d'inscriptions max :" ))
 
