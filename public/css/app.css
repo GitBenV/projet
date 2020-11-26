@@ -11,11 +11,11 @@ body{
 }
 
 .flash-success {
-    background-color: lawngreen;
+    background-color: darkgreen;
 }
 
 .flash-error {
-    background-color: red;
+    background-color: darkred;
 }
 
 #enter {
@@ -149,4 +149,9 @@ td {
     font-size: 1.6rem;
     border: medium solid darkgoldenrod;
     border-collapse: collapse;
+}
+
+.cloture
+{
+    background-color: #B0413E;
 }
