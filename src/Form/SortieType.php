@@ -17,9 +17,9 @@ class SortieType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, array ('label' => 'Nom :'))
-            ->add('datedebut', DateType::class, array('label' => 'Date de la sortie : '))
+            ->add('datedebut', DateType::class, array('label' => 'Date de la sortie'))
             ->add('duree')
-            ->add('datecloture', DateType::class, array('label' => 'Date de cloture :'))
+            ->add('datecloture', DateType::class, array('label' => 'Date de cloture'))
             ->add('nbinscriptionsmax', IntegerType::class, array('label' => "Nombre d'inscriptions max :" ))
 
         ;
