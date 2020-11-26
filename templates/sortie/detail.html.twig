@@ -13,8 +13,9 @@
         <p>Durée : {{ sortie.duree|date("H:i") }}</p>
         <p>{{ sortie.descriptioninfos }}</p>
         <br>
-        {% if ('datecloture') < ('new \DateTime()') %}
-            <p>Sortie Cloturée</p>
+
+        {% if sortie.datecloture <  date() %}
+            <span class="cloture">Sortie Cloturée</span>
         {% else %}
             {% block btn %}
             <button id="btn_enr" type="submit"><a id="btn_enr" href="{{ path('sortie_index', {'id':sortie.id}) }}">S'inscrire à la sortie</a></button>
