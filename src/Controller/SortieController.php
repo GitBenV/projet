@@ -81,7 +81,7 @@ class SortieController extends AbstractController
     public function affiche(EntityManagerInterface $em)
     {
         $inscription = new Inscriptions();
-        $inscription -> setDateinscription(new DateTime());
+        $inscription -> setDateinscription(new \DateTime());
         $user = $this->getUser();
         $inscription -> setUtilisateur($user);
         //$sortie = $this->getSortie(); // Sortie.php

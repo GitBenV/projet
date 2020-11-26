@@ -80,7 +80,7 @@ class Utilisateurs implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Campus")
-     */
+    */
     private $campus;
 
     /**
@@ -242,7 +242,7 @@ class Utilisateurs implements UserInterface
 
     /**
      * @return mixed
-     */
+    */
     public function getCampus()
     {
         return $this->campus;
@@ -250,7 +250,7 @@ class Utilisateurs implements UserInterface
 
     /**
      * @param mixed $campus
-     */
+    */
     public function setCampus($campus): void
     {
         $this->campus = $campus;
