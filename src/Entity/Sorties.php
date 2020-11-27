@@ -62,8 +62,11 @@ class Sorties
     private $urlPhoto;
 
     /*@Assert\NotBlank(message="Renseignez le nombre d'organisateur pour la sortie")*/
-    /**
+    /*/**
      * @ORM\Column(type="integer")
+     */
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateurs")
      */
     private $organisateur;
 
@@ -170,7 +173,23 @@ class Sorties
         return $this;
     }
 
-    public function getOrganisateur(): ?int
+    /**
+     * @return mixed
+     */
+    public function getOrganisateur()
+    {
+        return $this->organisateur;
+    }
+
+    /**
+     * @param mixed $organisateur
+     */
+    public function setOrganisateur($organisateur): void
+    {
+        $this->organisateur = $organisateur;
+    }
+
+    /*public function getOrganisateur(): ?int
     {
         return $this->organisateur;
     }
@@ -180,7 +199,9 @@ class Sorties
         $this->organisateur = $organisateur;
 
         return $this;
-    }
+    }*/
+
+
 
     /**
      * @return mixed

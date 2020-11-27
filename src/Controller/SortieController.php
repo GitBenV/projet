@@ -106,4 +106,21 @@ class SortieController extends AbstractController
         return $this->render("sortie/index.html.twig", ["sortie" => $sortie]);
     }
 
+    /**
+     * @Route("/sortie/annule/{id}", name="sortie_annule", requirements={"id": "\d+"})
+     */
+    public function annule($id, EntityManagerInterface $em)
+    {
+        $this->denyAccessUnlessGranted("ROLE_USER");
+        $sortieRepo = $this->getDoctrine()->getRepository(Sorties::class);
+        $sortie = $sortieRepo->find($id);
+
+        $em ->remove($sortie);
+        $em ->flush();
+
+        $this->addFlash('success', 'La sortie a été annulée avec succés !');
+
+        return $this->render("sortie/annule.html.twig", ["sortie" => $sortie]);
+    }
+
 }
