@@ -50,29 +50,13 @@
     </form>
     <div id="fprofil" class="form">
         <br>
-        <a>Vous pouvez Modifier votre mot de passe ci-dessous.</a>
-        <form method="post">
-            <div class="form-field">
-                <label for="editpass">Mot de passe :</label>
-                <input type="password" id="editpass" name="pass" class="form-control">
-            </div>
-            <div class="form-field">
-                <label for="verifpass">Confirmer le mot de passe :</label>
-                <input type="password" id="verifpass" name="pass2" class="form-control">
-            </div>
-            <button id="btn_enr" class="btn btn-blue">
-                Modifier le mot de passe
-            </button>
-        </form>
-        <button id="togg1" onclick="">Cliquez-moi !</button>
-        <div id="d1">
-            <p>Ce texte appartient au premier div de ma page</p>
-            <p>Ce deuxième paragraphe également</p>
+        <a>Vous pouvez Modifier votre mot de passe ici>> :  <button id="btn_enr" class="btn btn-blue" onclick="fmmdp()">Modifier le mot de passe</button></a>
+        <div id="mMdp">
+                {% for message in app.flashes('error') %}
+                    <div class="alert alert-danger" role="alert">
+                        {{message}}
+                    </div>
+                {% endfor %}
         </div>
-        {% for message in app.flashes('error') %}
-            <div class="alert alert-danger" role="alert">
-                {{message}}
-            </div>
-        {% endfor %}
     </div>
 {% endblock %}
