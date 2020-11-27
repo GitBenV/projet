@@ -19,7 +19,7 @@ class SortieTypeD extends AbstractType
         $builder
             ->add('descriptioninfos', TextareaType::class, array ('label'=>'Description :'))
             ->add('urlPhoto', UrlType::class, array('label' => 'Lien de la photo :'))
-            ->add('organisateur', IntegerType::class, array('label' => 'Organisateur :'))
+            ->add('organisateur')//, IntegerType::class, array('label' => 'Organisateur :'))
             ->add('etat')
             ->add('ville')
         ;
