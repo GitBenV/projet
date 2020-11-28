@@ -36,7 +36,6 @@ class UserController extends AbstractController
 
         // Récupères l'identifiant rentré par l'utilisateur
         $lastUsername = $authenticationUtils->getLastUsername();
-
         //Renvoie l'utilisateur sur la page d'acceuil si la connexion est échouée.
         return $this->render('user/login.html.twig', array(
             'last_username' => $lastUsername,
