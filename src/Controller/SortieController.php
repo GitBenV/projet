@@ -36,6 +36,22 @@ class SortieController extends AbstractController
     }
 
     /**
+    * @Route("/security/inscriptions", name="inscriptions")
+    */
+
+    public function listI()
+    {
+
+        $inscriptionRepo = $this->getDoctrine()->getRepository(Inscriptions::class);
+        $inscriptions = $inscriptionRepo->findAll();
+
+
+        return $this->render('security/inscriptions.html.twig', [
+            "inscriptions" => $inscriptions        ]);
+    }
+
+
+    /**
      * @Route("/sortie/{id}", name="sortie_detail", requirements={"id": "\d+"})
      */
 
@@ -48,11 +64,17 @@ class SortieController extends AbstractController
         $sortieRepo = $this->getDoctrine()->getRepository(Sorties::class);
         //trouve l'id
         $sortie = $sortieRepo->find($id);
+        $inscriptionsRepo = $this->getDoctrine()->getRepository(Inscriptions::class);
+        $inscription = $inscriptionsRepo->findAll();
 
-        return $this->render('sortie/detail.html.twig', [
-            "sortie" => $sortie
-        ]);
+
+            return $this->render('sortie/detail.html.twig', [
+                "sortie" => $sortie, "inscription" => $inscription,
+            ]);
+
     }
+
+
 
     /**
      * @Route ("/sortie/add", name="sortie_add")
@@ -102,8 +124,7 @@ class SortieController extends AbstractController
         $em ->flush();
 
         $this->addFlash('success', 'Vous êtes bien inscrit à la sortie.');
-
-        return $this->render("sortie/index.html.twig", ["sortie" => $sortie]);
+        return $this->render("sortie/index.html.twig", ["sortie" => $sortie, "inscription" => $inscription]);
     }
 
     /**

@@ -17,6 +17,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController
 {
+
     /**
      * @Route("/accueil/home", name="home")
      */
@@ -27,17 +28,21 @@ class UserController extends AbstractController
     }
     /* Connection */
     /**
-     * @Route("user/login", name="login")
+     * @Route("security/login", name="login")
      */
     public function login(AuthenticationUtils $authenticationUtils)
     {
+
+        //$session = new Session();
+        //$session -> start();
+
         //Récupères les erreurs de connexion s'il y en a
         $error = $authenticationUtils->getLastAuthenticationError();
 
         // Récupères l'identifiant rentré par l'utilisateur
         $lastUsername = $authenticationUtils->getLastUsername();
         //Renvoie l'utilisateur sur la page d'acceuil si la connexion est échouée.
-        return $this->render('user/login.html.twig', array(
+        return $this->render('security/login.html.twig', array(
             'last_username' => $lastUsername,
             'error' => $error,
         ));
@@ -129,6 +134,8 @@ class UserController extends AbstractController
      */
     public function editPass(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
+
+       // $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         if($request->isMethod('POST')) {
             $em = $this->getDoctrine()->getManager();
 
@@ -145,6 +152,23 @@ class UserController extends AbstractController
             }
         }
         return $this->render("user/profil.html.twig");
+    }
+    /**
+     * @Route("/user/index/", name="index")
+     */
+
+    public function listUser()
+    {
+        /* restriction des pages role user*/
+        $this->denyAccessUnlessGranted("ROLE_USER");
+        /*-------------------------------------*/
+        $utilisateurRepo = $this->getDoctrine()->getRepository(Utilisateurs::class);
+        $utilisateurs = $utilisateurRepo->findAll();
+
+
+        return $this->render('user/index.html.twig', [
+            "utilisateurs" => $utilisateurs
+        ]);
     }
 
     /*Permet de se deco*/

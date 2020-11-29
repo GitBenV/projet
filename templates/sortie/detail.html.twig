@@ -12,7 +12,7 @@
         <br>
         {% else %}
         {% if sortie.organisateur != app.user.username %}
-
+            <p>Une sortie peut-être à tout moment annulée, nous vous conseillons donc de rester vigilant sur son actualitée, pour celà rapprochez-vous de l'organisateur de celle-ci.</p>
         {% else %}
             <button id="btn_enr" type="submit"><a id="btn_enr" href="{{ path('sortie_annule', {'id':sortie.id}) }}">Annuler la sortie</a></button>
 
@@ -36,6 +36,27 @@
         <br>
     </div>
     <br>
-
 {% endblock %}
-
+{% block add1 %}
+    <br>
+    <h2>Les Participants à la sortie : {{ sortie.nom }}</h2>
+    <br>
+    <br>
+    <table class="table_sortie col-md-12">
+        <thead>
+        <tr>
+            <th>Participants</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for inscription in inscription %}
+            <tr>
+                <td>{{ inscription.utilisateur }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+{% endblock %}

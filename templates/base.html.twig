@@ -42,15 +42,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 center">
-                    <!-- Utiliser en 2 part pour afficher plus agréablement tableau et profil-->
-                    {% block add1 %}{% endblock %}
-                </div>
-                <div class="col-md-6 center">
-                    {% block add2 %}{% endblock %}
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-md-12">
                     {% block main %}
                         <main>{% block btn %}{% endblock %}
@@ -60,17 +51,26 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-6 center">
+                    <!-- Utiliser en 2 part pour afficher plus agréablement tableau et profil-->
+                    {% block add1 %}{% endblock %}
+                </div>
+                <div class="col-md-6 center">
+                    {% block add2 %}{% endblock %}
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-4">
-                    <img class="imghome" src="{{ asset('img/left.png') }}" alt="sortie" align="center">
+                    <img class="imghome" src="{{ asset('img/left.png') }}" alt="sortie1" align="center">
                 </div>
                 <div class="col-md-4">
                     <!--Affiche les differents main par rapport aux differentes routes-->
                 {%  block mainhome %}
                 {% endblock %}
-                    <img class="imghome" src="{{ asset('img/mid.png') }}" alt="sortie" align="center">
+                    <img class="imghome" src="{{ asset('img/mid.png') }}" alt="sortie2" align="center">
                 </div>
                 <div class="col-md-4">
-                    <img class="imghome" src="{{ asset('img/right.png') }}" alt="sortie" align="center">
+                    <img class="imghome" src="{{ asset('img/right.png') }}" alt="sortie3" align="center">
                 </div>
             </div>
             <div class="row" >
