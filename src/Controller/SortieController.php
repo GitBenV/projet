@@ -113,10 +113,9 @@ class SortieController extends AbstractController
         $this->denyAccessUnlessGranted("ROLE_USER");
         $sortieRepo = $this->getDoctrine()->getRepository(Sorties::class);
         $sortie = $sortieRepo->find($id);
-
+        $user = $this->getUser();
         $inscription = new Inscriptions();
         $inscription -> setDateinscription(new \DateTime());
-        $user = $this->getUser();
         $inscription -> setUtilisateur($user);
         $inscription -> setSortie($sortie);
 
