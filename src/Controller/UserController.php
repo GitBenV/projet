@@ -68,7 +68,6 @@ class UserController extends AbstractController
         // Traitement du formulaire
         $registerForm->handleRequest($request);
         if ($registerForm->isSubmitted() && $registerForm->isValid()){
-
             //encodage du mot de passe
             $hashed = $encoder->encodePassword($user, $user->getPassword());
             $user ->setPassword($hashed);

@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block main %}
-{{ form(editForm) }}
-    <div class="form-group">
-        <label for="inputFile">
-            Changer de photo de profil :
-        </label>
-        <input type="file" class="form-control-file" id="inputFile" />
-    </div>
+{% block add1 %}
+    {# app.user.picture#}
+
+{% endblock %}
+
+{% block add2 %}
+    {{ form_start(editForm) }}
+    {{ form_widget(editForm) }}
+    {{ form_end(editForm) }}
 {% endblock %}
 

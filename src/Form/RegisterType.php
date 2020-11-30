@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Utilisateurs;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -31,7 +32,13 @@ class RegisterType extends AbstractType
                 'second_options' => ['label' => 'Confirmer le mot de passe :'],])
             ->add('admin', CheckboxType::class ,array('label'=>'Admin :'))
             ->add('actif', CheckboxType::class ,array('label'=>'Actif :'))
-            ->add('campus');
+            ->add('campus')
+           // ->add('picture', FileType::class, array('label' =>'Photo de profil :',
+             //   'data_class' => null,
+               // 'required' => false))
+
+        ;
+
 
     }
 

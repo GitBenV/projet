@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UtilisateursRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateursRepository::class)
@@ -23,6 +24,28 @@ class Utilisateurs implements UserInterface
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /*
+     * @ORM\Column(type="string")
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+
+    private $picture;
+
+     * @return mixed
+
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+     * @param mixed $picture
+
+    public function setPicture($picture): void
+    {
+        $this->picture = $picture;
+    }
+    */
+
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)

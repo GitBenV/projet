@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Utilisateurs;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,8 +18,10 @@ class EditProfileType extends AbstractType
         $builder
             ->add('telephone', IntegerType::class)
             ->add('email', EmailType::class)
+           // ->add('picture', FileType::class, array(
+              //  'data_class' => null,
+            //    'required' => false))
             ->add('valider',SubmitType::class)
-
         ;
     }
 
